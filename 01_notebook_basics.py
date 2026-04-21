@@ -175,11 +175,11 @@ display(df)
 # MAGIC 上のセルの結果テーブルの右にある **＋ > 可視化** をクリックして、グラフを作ってみましょう。
 # MAGIC
 # MAGIC 例:
-# MAGIC - **可視化タイプ**: 棒グラフ
-# MAGIC - **X軸**: `pickup_zip`
-# MAGIC - **Y軸**: `fare_amount`（集計: 平均）
+# MAGIC - **可視化タイプ**: 散布図
+# MAGIC - **X軸**: `trip_distance`（走行距離）
+# MAGIC - **Y軸**: `fare_amount`（運賃）
 # MAGIC
-# MAGIC ドラッグ＆ドロップで簡単に設定できます。
+# MAGIC 距離が長いほど運賃が高くなる傾向が見えるはずです。
 
 # COMMAND ----------
 
@@ -191,12 +191,10 @@ display(df)
 # COMMAND ----------
 
 # MAGIC %sql
-# MAGIC SELECT pickup_zip, COUNT(*) AS trip_count, ROUND(AVG(fare_amount), 0) AS avg_fare
+# MAGIC SELECT trip_distance, fare_amount
 # MAGIC FROM samples.nyctaxi.trips
-# MAGIC WHERE pickup_zip IS NOT NULL
-# MAGIC GROUP BY pickup_zip
-# MAGIC ORDER BY trip_count DESC
-# MAGIC LIMIT 10
+# MAGIC WHERE trip_distance > 0 AND fare_amount > 0
+# MAGIC LIMIT 500
 
 # COMMAND ----------
 
@@ -218,7 +216,9 @@ display(df)
 # MAGIC
 # MAGIC 下に新しいセルを追加し、Genie Code を使って以下のコードを生成してみてください:
 # MAGIC
-# MAGIC **プロンプト例**: 「samples.nyctaxi.trips から、月別のトリップ数を集計して棒グラフで表示して」
+# MAGIC **プロンプト例**: 「samples.nyctaxi.trips から、月別のトリップ数を集計して表示して」
+# MAGIC
+# MAGIC 生成されたコードを実行し、結果テーブルから **＋ > 可視化** で棒グラフにしてみましょう。
 
 # COMMAND ----------
 
