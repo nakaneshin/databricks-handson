@@ -7,13 +7,7 @@
 
 # COMMAND ----------
 
-catalog = "workspace"  # ← 自分のカタログ名に変更してください
-schema  = "default"    # ← 自分のスキーマ名に変更してください
-
-spark.sql(f"USE CATALOG {catalog}")
-spark.sql(f"USE SCHEMA {schema}")
-
-print(f"カタログ: {catalog} / スキーマ: {schema}")
+# MAGIC %run ./00_env
 
 # COMMAND ----------
 

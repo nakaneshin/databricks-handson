@@ -16,8 +16,9 @@
 
 # COMMAND ----------
 
-catalog = "workspace"  # ← 自分のカタログ名に変更してください
-schema  = "default"    # ← 自分のスキーマ名に変更してください
+# MAGIC %run ./00_env
+
+# COMMAND ----------
 
 spark.sql(f"CREATE SCHEMA IF NOT EXISTS {catalog}.{schema}")
 spark.sql(f"CREATE VOLUME IF NOT EXISTS {catalog}.{schema}.raw_data")

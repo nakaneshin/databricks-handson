@@ -16,13 +16,7 @@
 # COMMAND ----------
 
 # MAGIC %python
-# MAGIC catalog = "workspace"  # ← 自分のカタログ名に変更してください
-# MAGIC schema  = "default"    # ← 自分のスキーマ名に変更してください
-# MAGIC
-# MAGIC spark.sql(f"USE CATALOG {catalog}")
-# MAGIC spark.sql(f"USE SCHEMA {schema}")
-# MAGIC
-# MAGIC print(f"カタログ: {catalog} / スキーマ: {schema}")
+# MAGIC %run ./00_env
 
 # COMMAND ----------
 
