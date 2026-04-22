@@ -18,15 +18,15 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("catalog", "workspace", "カタログ名")
-dbutils.widgets.text("schema",  "default", "スキーマ名")
+catalog = "workspace"  # ← 自分のカタログ名に変更してください
+schema  = "default"    # ← 自分のスキーマ名に変更してください
 
-catalog = dbutils.widgets.get("catalog")
-schema  = dbutils.widgets.get("schema")
 volume_path = f"/Volumes/{catalog}/{schema}/raw_data"
 
-print(f"カタログ: {catalog}")
-print(f"スキーマ: {schema}")
+spark.sql(f"USE CATALOG {catalog}")
+spark.sql(f"USE SCHEMA {schema}")
+
+print(f"カタログ: {catalog} / スキーマ: {schema}")
 print(f"Volume:  {volume_path}")
 
 # COMMAND ----------

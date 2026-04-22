@@ -7,11 +7,8 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("catalog", "shinn_demo", "カタログ名")
-dbutils.widgets.text("schema",  "ecsite_handson_v2", "スキーマ名")
-
-catalog = dbutils.widgets.get("catalog")
-schema  = dbutils.widgets.get("schema")
+catalog = "workspace"  # ← 自分のカタログ名に変更してください
+schema  = "default"    # ← 自分のスキーマ名に変更してください
 
 spark.sql(f"USE CATALOG {catalog}")
 spark.sql(f"USE SCHEMA {schema}")

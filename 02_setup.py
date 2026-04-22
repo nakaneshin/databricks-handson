@@ -16,13 +16,8 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("catalog", "workspace", "カタログ名")
-dbutils.widgets.text("schema",  "default", "スキーマ名")
-
-catalog = dbutils.widgets.get("catalog")
-schema  = dbutils.widgets.get("schema")
-
-assert catalog != "", "カタログ名を入力してください"
+catalog = "workspace"  # ← 自分のカタログ名に変更してください
+schema  = "default"    # ← 自分のスキーマ名に変更してください
 
 spark.sql(f"CREATE SCHEMA IF NOT EXISTS {catalog}.{schema}")
 spark.sql(f"CREATE VOLUME IF NOT EXISTS {catalog}.{schema}.raw_data")
