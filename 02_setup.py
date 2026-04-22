@@ -10,9 +10,9 @@
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## 環境設定（ここだけ変更してください）
+# MAGIC ## 環境設定
 # MAGIC
-# MAGIC 以下のWidgetに **自分のカタログ名とスキーマ名** を入力してください。
+# MAGIC `00_env` で設定したカタログ・スキーマを読み込みます。
 
 # COMMAND ----------
 
@@ -221,3 +221,27 @@ write_csv_to_volume(VOLUME_PATH, "sessions.csv",
 print(f"\n✅ CSVファイルをVolumeに書き込み完了: {VOLUME_PATH}")
 for f in dbutils.fs.ls(VOLUME_PATH):
     print(f"  {f.name} ({f.size:,} bytes)")
+
+# COMMAND ----------
+
+# MAGIC %md
+# MAGIC ## Genie Code 設定
+# MAGIC
+# MAGIC AIアシスタントが日本語で応答するよう設定します。
+
+# COMMAND ----------
+
+import os
+folder = "/Workspace" + "/".join(
+    dbutils.notebook.entry_point.getDbutils().notebook().getContext().notebookPath().get().rsplit("/", 1)[:-1]
+)
+with open(os.path.join(folder, "AGENTS.md"), "w") as f:
+    f.write("""# Genie Code Instructions
+- 必ず日本語で回答してください
+- コード内のコメントも日本語で書いてください
+- グラフのタイトル・軸ラベル・凡例は英語で出力してください（文字化け防止）
+- エラーが出たら原因をわかりやすく説明し、修正コードを提示してください
+- SQLを優先してください
+""")
+print("✅ Genie Code 設定完了")
+

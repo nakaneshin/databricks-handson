@@ -28,7 +28,6 @@
 
 -- COMMAND ----------
 
--- MAGIC %python
 -- MAGIC %run ./00_env
 
 -- COMMAND ----------

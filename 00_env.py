@@ -12,7 +12,10 @@
 catalog = "workspace"  # ← 自分のカタログ名に変更してください
 schema  = "default"    # ← 自分のスキーマ名に変更してください
 
+volume_path = f"/Volumes/{catalog}/{schema}/raw_data"
+
 spark.sql(f"USE CATALOG {catalog}")
 spark.sql(f"USE SCHEMA {schema}")
 
 print(f"カタログ: {catalog} / スキーマ: {schema}")
+print(f"Volume:  {volume_path}")

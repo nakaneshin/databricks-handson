@@ -22,11 +22,6 @@
 
 # COMMAND ----------
 
-volume_path = f"/Volumes/{catalog}/{schema}/raw_data"
-print(f"Volume: {volume_path}")
-
-# COMMAND ----------
-
 # MAGIC %md
 # MAGIC ---
 # MAGIC ## Step 1: CSV → Raw テーブル（Bronze）
